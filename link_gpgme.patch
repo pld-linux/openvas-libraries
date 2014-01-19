@@ -1,0 +1,14 @@
+diff -dur openvas-libraries-6.0.1.orig/base/CMakeLists.txt openvas-libraries-6.0.1/base/CMakeLists.txt
+--- openvas-libraries-6.0.1.orig/base/CMakeLists.txt	2013-10-20 19:38:39.000000000 +0200
++++ openvas-libraries-6.0.1/base/CMakeLists.txt	2014-01-19 11:16:04.820360660 +0100
+@@ -78,8 +78,8 @@
+   target_link_libraries (openvas_base_static ${GLIB_LDFlAGS} intl iconv ole32)
+   target_link_libraries (openvas_base_shared ${GLIB_LDFLAGS} intl iconv ole32)
+ else (MINGW)
+-  target_link_libraries (openvas_base_static ${GLIB_LDFLAGS})
+-  target_link_libraries (openvas_base_shared ${GLIB_LDFLAGS})
++  target_link_libraries (openvas_base_static ${GLIB_LDFLAGS} ${GPGME_LDFLAGS})
++  target_link_libraries (openvas_base_shared ${GLIB_LDFLAGS} ${GPGME_LDFLAGS})
+ endif (MINGW)
+ 
+ add_custom_indent_targets (${FILES})
