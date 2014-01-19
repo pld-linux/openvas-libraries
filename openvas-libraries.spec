@@ -15,6 +15,8 @@ License:	GPL v2
 Group:		Libraries
 Source0:	http://wald.intevation.org/frs/download.php/1417/%{name}-%{version}.tar.gz
 # Source0-md5:	ece48f91998597d4ad700ce3fb1d5fa3
+Source1:	https://svn.wald.intevation.org/svn/openvas/trunk/tools/openvas-check-setup
+# Source1-md5:	f9d9ef34c50794fcb3ffedbad90a7585
 Patch0:		link_gpgme.patch
 URL:		http://www.openvas.org/
 BuildRequires:	bison
@@ -118,8 +120,12 @@ cd build
 %install
 rm -rf $RPM_BUILD_ROOT
 
+install -d $RPM_BUILD_ROOT%{_sbindir}
+
 %{__make} -C build install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+install %{SOURCE1} $RPM_BUILD_ROOT%{_sbindir}/openvas-check-setup
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -137,6 +143,7 @@ rm -rf $RPM_BUILD_ROOT
 %files -n openvas-common
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/openvas-nasl
+%attr(755,root,root) %{_sbindir}/openvas-check-setup
 %dir %{_sysconfdir}/openvas
 %dir %{_datadir}/openvas
 %{_datadir}/openvas/openvas-services
