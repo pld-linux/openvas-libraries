@@ -137,6 +137,7 @@ rm -rf $RPM_BUILD_ROOT
 %files -n openvas-common
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/openvas-nasl
+%dir %{_sysconfdir}/openvas
 %dir %{_datadir}/openvas
 %{_datadir}/openvas/openvas-services
 %attr(755,root,root) %{_datadir}/openvas/openvas-lsc-rpm-creator.sh
